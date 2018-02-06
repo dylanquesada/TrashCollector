@@ -2,6 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
+using System;
 
 namespace TrashCollector.Models
 {
@@ -12,8 +13,13 @@ namespace TrashCollector.Models
         public string PhoneNumber { get; set; }
         public bool TwoFactor { get; set; }
         public bool BrowserRemembered { get; set; }
+        public List<DayOfWeek> PickupDays { get; set; }
     }
-
+    public class SetPickupDaysViewModel
+    {
+        [Required]
+        public List<DayOfWeek> PickupDays { get; set; }
+    }
     public class ManageLoginsViewModel
     {
         public IList<UserLoginInfo> CurrentLogins { get; set; }
