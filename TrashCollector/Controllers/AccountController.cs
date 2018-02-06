@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using TrashCollector.Models;
+using System.Collections.Generic;
 
 namespace TrashCollector.Controllers
 {
@@ -151,7 +152,15 @@ namespace TrashCollector.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser {
+                    UserName = model.Email,
+                    Email = model.Email,
+                    Address = model.Address,
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
+                    Zip = model.Zip,
+                    RoleId = model.RoleId
+                };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -469,6 +478,7 @@ namespace TrashCollector.Controllers
             public string LoginProvider { get; set; }
             public string RedirectUri { get; set; }
             public string UserId { get; set; }
+
 
             public override void ExecuteResult(ControllerContext context)
             {
