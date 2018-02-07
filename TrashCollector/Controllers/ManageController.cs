@@ -64,11 +64,15 @@ namespace TrashCollector.Controllers
                 var user = await UserManager.FindByNameAsync(model.Email);
                 user.Pickupdays = model.PickupDays;
                 var result = await UserManager.UpdateAsync(user);
-            }//TODO: FIX BELOW
-            return RedirectToAction("SetPickupDaysConfirmation", "Manage");
-            
+            }
+            return RedirectToAction("SetPickupDaysConfirmation", "Manage");            
         }
                     
+        // GET: Manage/SetPickupDaysConfirmation
+        public ActionResult SetPickupDaysConfirmation()
+        {
+            return View();
+        }
         //
         // GET: /Manage/Index
         public async Task<ActionResult> Index(ManageMessageId? message)
