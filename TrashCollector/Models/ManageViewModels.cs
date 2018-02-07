@@ -21,18 +21,9 @@ namespace TrashCollector.Models
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
-        [Required]
-        public List<string> PickupDays { get; set; }
-        public enum DaysOfWeek
-        {
-            Sunday,
-            Monday,
-            Tuesday,
-            Wednesday,
-            Thursday,
-            Friday,
-            Saturday
-        }
+        [Required]       
+        public DayOfWeek PickupDay { get; set; }
+        
     }
     public class ManageLoginsViewModel
     {

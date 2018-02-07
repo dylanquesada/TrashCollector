@@ -62,7 +62,7 @@ namespace TrashCollector.Controllers
             if (ModelState.IsValid)
             {
                 var user = await UserManager.FindByNameAsync(model.Email);
-                user.Pickupdays = model.PickupDays;
+                user.Pickupday = model.PickupDay;
                 var result = await UserManager.UpdateAsync(user);
             }
             return RedirectToAction("SetPickupDaysConfirmation", "Manage");            
