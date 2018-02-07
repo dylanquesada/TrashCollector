@@ -13,12 +13,26 @@ namespace TrashCollector.Models
         public string PhoneNumber { get; set; }
         public bool TwoFactor { get; set; }
         public bool BrowserRemembered { get; set; }
-        public List<DayOfWeek> PickupDays { get; set; }
+        public List<string> PickupDays { get; set; }
     }
     public class SetPickupDaysViewModel
     {
         [Required]
-        public List<DayOfWeek> PickupDays { get; set; }
+        [EmailAddress]
+        [Display(Name = "Email")]
+        public string Email { get; set; }
+        [Required]
+        public List<string> PickupDays { get; set; }
+        public enum DaysOfWeek
+        {
+            Sunday,
+            Monday,
+            Tuesday,
+            Wednesday,
+            Thursday,
+            Friday,
+            Saturday
+        }
     }
     public class ManageLoginsViewModel
     {

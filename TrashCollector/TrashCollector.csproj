@@ -273,7 +273,8 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\RoleId.cshtml" />
-    <Content Include="Views\Manage\PickupDays.cshtml" />
+    <Content Include="Views\Manage\SetPickupDays.cshtml" />
+    <Content Include="Views\Manage\SetPickupDaysConfirmation.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

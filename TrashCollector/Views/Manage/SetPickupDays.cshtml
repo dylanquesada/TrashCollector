@@ -1,20 +1,25 @@
-﻿@*@model TrashCollector.Models.PickupDaysViewModel
+﻿@model TrashCollector.Models.SetPickupDaysViewModel
 @{
-    ViewBag.Title = "Phone Number";
+    ViewBag.Title = "Pickup Days";
 }
 
 <h2>@ViewBag.Title.</h2>
 
-@using (Html.BeginForm("AddPhoneNumber", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+@using (Html.BeginForm("PickupDays", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()
-    <h4>Add a phone number</h4>
+    <h4>Select your pickup day.</h4>
     <hr />
     @Html.ValidationSummary("", new { @class = "text-danger" })
+
+
+
+
+
     <div class="form-group">
-        @Html.LabelFor(m => m.Number, new { @class = "col-md-2 control-label" })
+        @Html.LabelFor(m => m.PickupDays, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Number, new { @class = "form-control" })
+            @*@Html.DropDownListFor(m => m.DaysOfWeek, )*@
         </div>
     </div>
     <div class="form-group">
@@ -26,4 +31,4 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
-}*@
+}

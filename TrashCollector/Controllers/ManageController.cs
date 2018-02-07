@@ -50,6 +50,25 @@ namespace TrashCollector.Controllers
             }
         }
 
+        // GET: /Manage/SetPickupDays
+        public ActionResult SetPickupDays()
+        {
+            return View();
+        }
+        [HttpPost]
+        // POST: /Manage/SetPickupDays
+        public async Task<ActionResult> SetPickupDays(SetPickupDaysViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = await UserManager.FindByNameAsync(model.Email);
+                user.Pickupdays = model.PickupDays;
+                var result = await UserManager.UpdateAsync(user);
+            }//TODO: FIX BELOW
+            return RedirectToAction("SetPickupDaysConfirmation", "Manage");
+            
+        }
+                    
         //
         // GET: /Manage/Index
         public async Task<ActionResult> Index(ManageMessageId? message)
@@ -230,7 +249,10 @@ namespace TrashCollector.Controllers
             {
                 return View(model);
             }
-            var result = await UserManager.ChangePasswordAsync(User.Identity.GetUserId(), model.OldPassword, model.NewPassword);
+            var result = await UserManager.ChangePasswordAsync(
+                User.Identity.GetUserId(), 
+                model.OldPassword, 
+                model.NewPassword);
             if (result.Succeeded)
             {
                 var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
@@ -383,7 +405,16 @@ namespace TrashCollector.Controllers
             RemovePhoneSuccess,
             Error
         }
-
+        public enum DaysOfWeek
+        {
+            Sunday,
+            Monday,
+            Tuesday,
+            Wednesday,
+            Thursday,
+            Friday,
+            Saturday
+        }
 #endregion
     }
 }
