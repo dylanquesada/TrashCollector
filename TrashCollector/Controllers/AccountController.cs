@@ -175,8 +175,7 @@ namespace TrashCollector.Controllers
                     Address = model.Address,
                     FirstName = model.FirstName,
                     LastName = model.LastName,
-                    Zip = model.Zip,
-                    //RoleId = model.RoleId
+                    Zip = model.Zip
                 };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)

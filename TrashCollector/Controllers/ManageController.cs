@@ -61,7 +61,7 @@ namespace TrashCollector.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = await UserManager.FindByNameAsync(model.Email);
+                var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
                 user.Pickupday = model.PickupDay;
                 var result = await UserManager.UpdateAsync(user);
             }
