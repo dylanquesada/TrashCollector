@@ -4935,6 +4935,11 @@ a.list-group-item.active > .badge,
   line-height: 2.1428571435;
   color: inherit;
   background-color: #eeeeee;
+  background-image: url(../Pictures/hightech_icon1.png);
+  background-repeat: no-repeat;
+  
+  background-position-x:right;
+  background-size:contain
 }
 
 .jumbotron h1 {

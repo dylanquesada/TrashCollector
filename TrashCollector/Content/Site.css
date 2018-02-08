@@ -1,13 +1,20 @@
 ﻿body {
-    background-color: cadetblue;
+
+    background-color: #1a97c7;
+
+    
+   
     padding-top: 50px;
     padding-bottom: 20px;
 }
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
+    background:none;
     padding-left: 15px;
     padding-right: 15px;
+
+
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -22,4 +29,15 @@ input,
 select,
 textarea {
     max-width: 280px;
+
 }
+a{
+    color:aliceblue;
+}
+*{
+    text-emphasis-color: aliceblue;
+    text-decoration-color: aliceblue;
+    outline-color:aliceblue;
+    
+}
+
