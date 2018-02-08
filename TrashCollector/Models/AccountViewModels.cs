@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace TrashCollector.Models
@@ -98,6 +99,9 @@ namespace TrashCollector.Models
         [DataType(DataType.PostalCode)]
         [Display(Name = "Zip Code")]
         public int Zip { get; set; }
+        [Required]
+        [DataType(DataType.DateTime)]
+        public DateTime EnrollDate { get; set; }
     
     }
 

@@ -42,6 +42,7 @@ namespace TrashCollector.Migrations
                         LastName = c.String(),
                         Zip = c.Int(nullable: false),
                         Pickupday = c.Int(nullable: false),
+                        EnrollDate = c.DateTime(nullable: false),
                         Email = c.String(maxLength: 256),
                         EmailConfirmed = c.Boolean(nullable: false),
                         PasswordHash = c.String(),
