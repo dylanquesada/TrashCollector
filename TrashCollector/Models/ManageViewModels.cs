@@ -71,16 +71,17 @@ namespace TrashCollector.Models
         [Required]
         public DayOfWeek PickupDay { get; set; }
     }
-    public class SetVacationDays
-    {
-        [Required]
-        [DataType(DataType.DateTime)]
-        [Display(Name = "Start Date")]
-        public DateTime StartDate;
-        [Required]
-        [DataType(DataType.DateTime)]
-        [Display(Name = "End Date")]
-        public DateTime EndDate;
+    public class SetVacationDaysViewModel
+    {        
+        //[DataType(DataType.DateTime)]
+        //[Display(Name = "Start Date")]
+        //public DateTime StartDate;
+        
+        //[DataType(DataType.DateTime)]
+        //[Display(Name = "End Date")]
+        //public DateTime EndDate;
+        public string EndDate { get; set; }
+        public string StartDate { get; set; }
     }    
 
     public class ManageLoginsViewModel

@@ -50,6 +50,33 @@ namespace TrashCollector.Controllers
             }
         }
 
+        // GET: /Manage/setVacationDays
+        public ActionResult SetVacationDays()
+        {
+            return View();
+        }
+
+        //POST: /Manage/SetVacationDays
+        [HttpPost]
+        public async Task<ActionResult> SetVacationDays(SetVacationDaysViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+                user.StartDate = Convert.ToDateTime(model.StartDate);
+                user.EndDate = Convert.ToDateTime(model.EndDate);
+                var result = await UserManager.UpdateAsync(user);
+            }
+            return RedirectToAction("SetVacationDaysConfirmation", "Manage");
+        }
+        // GET: Manage/SetVacationDaysConfirmation
+        public ActionResult SetVacationDaysConfirmation()
+        {
+            return View();
+        }
+
+
+
         // GET: /Manage/SetPickupDays
         public ActionResult SetPickupDays()
         {

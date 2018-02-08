@@ -18,7 +18,8 @@ namespace TrashCollector.Models
         public int Zip { get; set; }
         public DayOfWeek Pickupday { get; set; }
         public DateTime EnrollDate { get; internal set; }
-
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType

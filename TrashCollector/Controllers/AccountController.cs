@@ -176,7 +176,9 @@ namespace TrashCollector.Controllers
                     FirstName = model.FirstName,
                     LastName = model.LastName,
                     Zip = model.Zip,
-                    EnrollDate = DateTime.Now
+                    EnrollDate = DateTime.Now,
+                    StartDate = new DateTime(2000, 1, 1),
+                    EndDate = new DateTime(2000, 1, 1)
                 };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)

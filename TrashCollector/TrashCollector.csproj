@@ -202,10 +202,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Helpers\EnumHelper.cs" />
-    <Compile Include="Migrations\201802080318074_init.cs" />
-    <Compile Include="Migrations\201802080318074_init.Designer.cs">
-      <DependentUpon>201802080318074_init.cs</DependentUpon>
+    <Compile Include="Helpers\Bill.cs" />
+    <Compile Include="Helpers\Purse.cs" />
+    <Compile Include="Migrations\201802081606200_init.cs" />
+    <Compile Include="Migrations\201802081606200_init.Designer.cs">
+      <DependentUpon>201802081606200_init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -370,6 +371,8 @@
     <Content Include="Views\Role\Edit.cshtml" />
     <Content Include="Views\Role\Details.cshtml" />
     <Content Include="Views\Role\Delete.cshtml" />
+    <Content Include="Views\Manage\SetVacationDays.cshtml" />
+    <Content Include="Views\Manage\SetVacationDaysConfirmation.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -384,8 +387,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201802080318074_init.resx">
-      <DependentUpon>201802080318074_init.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201802081606200_init.resx">
+      <DependentUpon>201802081606200_init.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
