@@ -10,6 +10,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using TrashCollector.Models;
 using System.Collections.Generic;
+using TrashCollector.Helpers;
 
 namespace TrashCollector.Controllers
 {
@@ -435,6 +436,21 @@ namespace TrashCollector.Controllers
             return View();
         }
 
+        // GET /Account/GetAccount
+        public async Task<ActionResult> GetAccount()
+        {
+            DateTime defaultDate = new DateTime(2000, 1, 1);
+            Bill bill = new Bill();
+            decimal amount;
+            var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+            amount = bill.GetMonthlyCharge(2, user.Pickupday);
+            if (user.StartDate != defaultDate)
+            {
+                amount = bill.AccountForVacation(amount, 2, user.StartDate, user.EndDate, user.Pickupday);
+            }
+                
+            return View(amount);
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)

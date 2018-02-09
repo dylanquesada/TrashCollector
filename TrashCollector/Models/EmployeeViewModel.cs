@@ -9,9 +9,10 @@ namespace TrashCollector.Models
     public class EmployeeViewModel
     {
     }
-    public class GetZipList
+    public class GetZipListViewModel
     {
         [Required]
+        [DataType(DataType.PostalCode)]
         public int Zip { get; set; }
 
     }

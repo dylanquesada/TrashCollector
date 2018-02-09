@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNet.Identity.Owin;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -59,18 +60,15 @@ namespace TrashCollector.Controllers
         }
         // POST /Employee/GetZipList
         [HttpPost]
-        public ActionResult GetZipList(EmployeeViewModel model)
+        public async Task<ActionResult> GetZipList(GetZipListViewModel model)
         {
-            ApplicationDbContext db = new ApplicationDbContext();
-            if (ModelState.IsValid)
-            {
-                var list = new List<string>();
-                var query = from d in db.Users
-                            orderby d.Zip
+            //ApplicationDbContext db = new ApplicationDbContext();
+           // var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+            var list = new List<string>();
+            var query = from d in UserManager.Users
+                            where d.Zip == model.Zip
                             select d.Zip;
-                return View(list);
-            }
-            return View();
+            return View(list);   
         }
     }
 }
