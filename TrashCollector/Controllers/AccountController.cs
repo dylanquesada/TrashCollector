@@ -437,7 +437,7 @@ namespace TrashCollector.Controllers
         }
 
         // GET /Account/GetAccount
-        public async Task<ActionResult> GetAccount()
+        public async Task<ActionResult> GetAccount(GetAccountViewModel model)
         {
             DateTime defaultDate = new DateTime(2000, 1, 1);
             Bill bill = new Bill();
@@ -448,8 +448,8 @@ namespace TrashCollector.Controllers
             {
                 amount = bill.AccountForVacation(amount, 2, user.StartDate, user.EndDate, user.Pickupday);
             }
-                
-            return View(amount);
+            model.Amount = amount;    
+            return View(model);
         }
         protected override void Dispose(bool disposing)
         {

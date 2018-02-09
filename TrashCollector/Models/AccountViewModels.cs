@@ -4,6 +4,10 @@ using System.ComponentModel.DataAnnotations;
 
 namespace TrashCollector.Models
 {
+    public class GetAccountViewModel
+    {
+        public decimal Amount { get; set; }
+    }
     public class ExternalLoginConfirmationViewModel
     {
         [Required]
