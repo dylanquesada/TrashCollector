@@ -23,11 +23,27 @@ namespace TrashCollector.Helpers
         }
         public decimal AccountForVacation(decimal initial, decimal charge, DateTime start, DateTime end, DayOfWeek pickupDay)
         {
-            for (int i = start.Day; i <= end.Day; i++)
+            if (start.Month == DateTime.Now.Month)
             {
-                if (pickupDay == new DateTime(DateTime.Now.Year, DateTime.Now.Month, i).DayOfWeek)
+                if (end.Month != DateTime.Now.Month)
                 {
-                    initial -= charge;
+                    for (int i = start.Day; i <= DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month); i++)
+                    {
+                        if (pickupDay == new DateTime(DateTime.Now.Year, DateTime.Now.Month, i).DayOfWeek)
+                        {
+                            initial -= charge;
+                        }
+                    }
+                }
+                else
+                {
+                    for (int i = start.Day; i <= end.Day; i++)
+                    {
+                        if (pickupDay == new DateTime(DateTime.Now.Year, DateTime.Now.Month, i).DayOfWeek)
+                        {
+                            initial -= charge;
+                        }
+                    }
                 }
             }
             return initial;

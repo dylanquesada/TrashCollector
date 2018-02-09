@@ -1,4 +1,13 @@
 ﻿@model TrashCollector.Models.GetAccountViewModel
 
-@Html.LabelFor(m => m.Amount)
-@Html.DisplayFor(m => m.Amount)
+<div class="container">
+    <div class="row">
+        <div class="col-md-10">
+            <h4>Account Details</h4>
+            <p>Balance for the current month:</p>
+            @Html.LabelFor(m => m.Amount)
+            &#36;@Html.DisplayFor(m => m.Amount)
+        </div>
+    </div>
+</div>
+
