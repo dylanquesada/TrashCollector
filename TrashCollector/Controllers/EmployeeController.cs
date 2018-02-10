@@ -116,5 +116,9 @@ namespace TrashCollector.Controllers
         //                    select d.Zip;
         //    return View(list);   
         //}
+        public ActionResult Map()
+        {
+            return View();
+        }
     }
 }
