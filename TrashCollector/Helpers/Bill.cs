@@ -7,8 +7,7 @@ namespace TrashCollector.Helpers
 {
     public class Bill
     {
-        private decimal MonthlyCost;
-
+       
         public decimal GetMonthlyCharge(decimal charge, DayOfWeek pickupDay)
         {
             decimal total = 0;

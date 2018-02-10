@@ -67,7 +67,16 @@ namespace TrashCollector.Controllers
             }
         }
 
-        //
+        // GET: /Account/Index
+       public ActionResult Index()
+        {
+            List<string> list = new List<string>();
+            foreach(User a in UserManager.Users)
+            {
+                list.Add(a.FirstName);
+            }
+            return View(list);
+        }
         // GET: /Account/Login
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
@@ -170,7 +179,7 @@ namespace TrashCollector.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser {
+                var user = new User {
                     UserName = model.Email,
                     Email = model.Email,
                     Address = model.Address,
@@ -400,7 +409,7 @@ namespace TrashCollector.Controllers
                 {
                     return View("ExternalLoginFailure");
                 }
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new User { UserName = model.Email, Email = model.Email };
                 var result = await UserManager.CreateAsync(user);
                 if (result.Succeeded)
                 {

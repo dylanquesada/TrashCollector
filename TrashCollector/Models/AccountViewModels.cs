@@ -4,6 +4,11 @@ using System.ComponentModel.DataAnnotations;
 
 namespace TrashCollector.Models
 {
+    public class Index
+    {
+        List<string> list { get; set; }
+        string FirstName { get; set; }
+    }
     public class GetAccountViewModel
     {
         public decimal Amount { get; set; }

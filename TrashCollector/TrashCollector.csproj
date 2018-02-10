@@ -214,6 +214,7 @@
     <Compile Include="Models\EmployeeViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\PickupModel.cs" />
     <Compile Include="Models\RoleViewModel.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
@@ -378,6 +379,8 @@
     <Content Include="Views\Employee\GetZipList.cshtml" />
     <Content Include="Views\Employee\Index.cshtml" />
     <Content Include="Views\Account\GetAccount.cshtml" />
+    <Content Include="Views\Employee\ShowRouteList.cshtml" />
+    <Content Include="Views\Account\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
