@@ -1,0 +1,43 @@
+﻿@model TrashCollector.Models.GetZipMapViewModel
+
+
+<div class="list-inline">
+    <div class="col-md-offset-2 col-md-10">
+        <table class="table top-buffer">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Label.LastName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Label.Address)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Label.Day)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Label.Zip)
+                </th>
+            </tr>
+            @foreach (var item in Model.Pickup)
+            {
+                <tr>
+                    <td>
+                        @item.LastName
+                    </td>
+                    <td>
+                        @item.Address
+                    </td>
+                    <td>
+                        @item.Day
+                    </td>
+                    <td>
+                        @item.Zip
+                    </td>
+                </tr>
+
+            }
+        </table>
+
+    </div>
+</div>
+

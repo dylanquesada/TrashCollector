@@ -4,9 +4,11 @@ using Microsoft.AspNet.Identity.Owin;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using System.Xml.Linq;
 using TrashCollector.Models;
 
 
@@ -66,7 +68,6 @@ namespace TrashCollector.Controllers
         public async Task<ActionResult> GetZipList(GetZipListViewModel model)
         {
             model.Pickups = new List<PickupModel>();
-            //UserManager = new ApplicationUserManager(new UserStore<User>(context.Get<ApplicationDbContext>()));
             foreach (User a in UserManager.Users)
             {
                 if (a.RoleId == 0)
@@ -86,9 +87,10 @@ namespace TrashCollector.Controllers
                 }
             }
             return View("ShowRouteList", model);
+            
         }
 
-        public ActionResult ShowRouteList(GetZipListViewModel model)
+        public ActionResult ShowRouteList(GetZipMapViewModel model)
         {
             return View(model);
         }
@@ -106,19 +108,58 @@ namespace TrashCollector.Controllers
             }
             return false;
         }
-        //public async Task<ActionResult> GetZipList(GetZipListViewModel model)
-        //{
-        //    //ApplicationDbContext db = new ApplicationDbContext();
-        //   // var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
-        //    var list = new List<string>();
-        //    var query = from d in UserManager.Users
-        //                    where d.Zip == model.Zip
-        //                    select d.Zip;
-        //    return View(list);   
-        //}
+
         public ActionResult Map()
         {
             return View();
+        }
+        public ActionResult MapRoute(GetZipMapViewModel model)
+        {
+            return View(model);
+        }
+        // GET: /Employee/GetZipMap
+        public ActionResult GetZipMap()
+        {
+            return View();
+        }
+        // POST /Employee/GetZipMap
+        [HttpPost]
+        public async Task<ActionResult> GetZipMap(GetZipMapViewModel model)
+        {
+            model.Pickup = new List<PickupMapModel>();
+            foreach (User a in UserManager.Users)
+            {
+                if (a.RoleId == 0)
+                {
+                    if (a.Zip == model.Zip && a != null && a.Pickupday == DateTime.Now.DayOfWeek)
+                    {
+                        if (!VacationCheck(a.StartDate, a.EndDate))
+                        {
+                            string address = a.Address;
+                            string requestUri = string.Format("http://maps.googleapis.com/maps/api/geocode/xml?address={0}&sensor=false", Uri.EscapeDataString(address));
+
+                            WebRequest request = WebRequest.Create(requestUri);
+                            WebResponse response = request.GetResponse();
+                            XDocument xdoc = XDocument.Load(response.GetResponseStream());
+
+                            XElement result = xdoc.Element("GeocodeResponse").Element("result");
+                            XElement locationElement = result.Element("geometry").Element("location");
+                            XElement lat = locationElement.Element("lat");
+                            XElement lng = locationElement.Element("lng");
+                            PickupMapModel pickup = new PickupMapModel();
+                            pickup.LastName = a.LastName.ToString();
+                            pickup.Address = (a.Address);
+                            pickup.Day = (a.Pickupday.ToString());
+                            pickup.Zip = (a.Zip.ToString());
+                            pickup.Lat = lat.Value.ToString();
+                            pickup.Lng = lng.Value.ToString();
+                            model.Pickup.Add(pickup);
+                        }
+                    }
+                }
+            }
+           
+            return View("MapRoute", model);
         }
     }
 }

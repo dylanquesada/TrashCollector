@@ -17,6 +17,14 @@ namespace TrashCollector.Models
         public List<PickupModel> Pickups { get; set;}
         public PickupModel Label { get; set; }
     }
+    public class GetZipMapViewModel
+    {
+        [Required]
+        [DataType(DataType.PostalCode)]
+        public int Zip { get; set; }
+        public List<PickupMapModel> Pickup { get; set; }
+        public PickupMapModel Label { get; set; }
+    }
     public class ShowRouteListViewModel
     {
         public List<string> list { get; set; }

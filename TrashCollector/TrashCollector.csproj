@@ -214,6 +214,7 @@
     <Compile Include="Models\EmployeeViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\PickupMapModel.cs" />
     <Compile Include="Models\PickupModel.cs" />
     <Compile Include="Models\RoleViewModel.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
@@ -382,6 +383,8 @@
     <Content Include="Views\Employee\ShowRouteList.cshtml" />
     <Content Include="Views\Account\Index.cshtml" />
     <Content Include="Views\Employee\Map.cshtml" />
+    <Content Include="Views\Employee\MapRoute.cshtml" />
+    <Content Include="Views\Employee\GetZipMap.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
