@@ -205,7 +205,7 @@ namespace TrashCollector.Controllers
                     {
                         return RedirectToAction("SetPickupDays", "Manage");
                     }
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("GetZipList", "Employee");
                 }
                 AddErrors(result);
             }
